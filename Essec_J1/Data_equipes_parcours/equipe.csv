@@ -1,6 +1,6 @@
 Dossard;Nom;doigts;mixite;ent
-1;equipe_test_1;1915577;F;1
-2;equipe_test_2;1915576;M;0
+1001;equipe_test_1;19155770;F;1
+1002;equipe_test_2;19155760;M;0
 3;Raid Dingue des Torpilles !;1915509;F;1
 5;Chamallow;1915578;F;1
 7;Gwadaussies;1915535;M;1
@@ -9,76 +9,76 @@ Dossard;Nom;doigts;mixite;ent
 13;Fast And Furious;1915549;H;1
 15;Pitchou;1915534;F;1
 18;Vosgiens un jour, vosgiens toujours;1915546;H;1
-19;Dans le rétro;;H;1
-21;Victoria et Constant;;M;1
-23;Les gazelles à Cergy;;F;1
-65;les shifteuses;;F;1
-27;Les Douts;;M;1
-29;CARAVISTOUILLE;;M;1
-105;Rug N Bat;;H;0
-31;Torpillettes;;F;1
-107;RED&SEX;;M;0
-109;Eli & Elvire;;F;0
-112;Les Deux Meuh Raids;;H;0
-113;Crumble;;M;0
-33;Les Galettes Poitevines;;H;1
-115;Les MarLéaventurières;;F;0
-36;La dream team des sangliers;;M;1
-118;Les Troufions;;M;0
-38;Amazones;;F;1
-40;Les Binômes;;M;1
-41;Les Beaux frères en Cavale;;H;1
-43;LA DEGLINGUE;;M;1
-120;2 juillet;;F;0
-45;les Am... d'Orion;;M;1
-47;les coachettes d'issy;;F;1
-121;APA;;H;0
-49;Tic et Tac;;M;1
-51;Coca C2;;F;1
-54;Axelo;;M;1
-55;LK;;M;1
-123;Inoxmen;;H;0
-126;Raid et Fesses;;H;0
-57;les raid'ingues;;F;1
-127;Md;;H;0
-60;Les 2 E;;F;1
-129;Roc E92;;M;0
-132;Team Claquette Rosé;;H;0
-61;Veltri;;H;1
-134;Claqué au sol;;H;0
-63;R'édi;;M;1
-26;Les Derniers Tooms;;M;1
-135;Croaa Croaa;;H;0
-137;Citron - Sucre;;H;0
-139;Sucre - Citron;;H;0
-141;Rising Pengyous;;H;0
-67;Les entêtés;;H;1
-143;Les danseurs;;M;0
-70;Les douaisiens;;H;1
-72;Les Pognons;;H;1
-73;Matalang;;M;1
-76;CWBAF - Could we BE any faster ?;;F;1
-78;Hors Sol;;M;1
-79;Poco;;H;1
-101;MGO TC3;;H;0
-1;Les Basco Solognots;;M;1
-104;Les déboussolés;;M;0
-159;EY1;;M;0
-91;Atlas;;H;1
-156;Sucré Salé;;H;0
-97;EY2;;M;1
-161;EY3;;M;0
-99;EY4;;H;1
-82;Vas y ma gueule! ;;M;1
-146;Yvette Ornières;;H;0
-83;Lespasdouesfontducanoe;;F;1
-147;La villa;;H;0
-150;El Kanfoud;;H;0
-151;Les Carnotins;;H;0
-153;MILF HUNTERS;;H;0
-86;Les Rats'zé;;H;1
-88;DSA;;H;1
-90;CHAVILLE ATHLETISME;;H;1
-93;CQRunner;;H;1
-95;Michaloup;;M;1
-157;ARDENT SPORTS;;M;0
+19;Dans le rétro;1915528;H;1
+21;Victoria et Constant;1915525;M;1
+23;Les gazelles à Cergy;1915560;F;1
+65;les shifteuses;1915503;F;1
+27;Les Douts;1915579;M;1
+29;CARAVISTOUILLE;1915555;M;1
+105;Rug N Bat;1915551;H;0
+31;Torpillettes;1915507;F;1
+107;RED&SEX;1915541;M;0
+109;Eli & Elvire;1915506;F;0
+112;Les Deux Meuh Raids;1915508;H;0
+113;Crumble;1915580;M;0
+33;Les Galettes Poitevines;1915559;H;1
+115;Les MarLéaventurières;1915564;F;0
+36;La dream team des sangliers;1915524;M;1
+118;Les Troufions;1915513;M;0
+38;Amazones;1915574;F;1
+40;Les Binômes;1915572;M;1
+41;Les Beaux frères en Cavale;1915521;H;1
+43;LA DEGLINGUE;1915522;M;1
+120;2 juillet;1915536;F;0
+45;les Am... d'Orion;1915511;M;1
+47;les coachettes d'issy;1915519;F;1
+121;APA;1915529;H;0
+49;Tic et Tac;1915573;M;1
+51;Coca C2;1915504;F;1
+54;Axelo;1915510;M;1
+55;LK;1915537;M;1
+123;Inoxmen;1915523;H;0
+126;Raid et Fesses;1915502;H;0
+57;les raid'ingues;1915552;F;1
+127;Md;1915565;H;0
+60;Les 2 E;1915576;F;1
+129;Roc E92;1915540;M;0
+132;Team Claquette Rosé;1915566;H;0
+61;Veltri;1915538;H;1
+134;Claqué au sol;1915520;H;0
+63;R'édi;1915561;M;1
+26;Les Derniers Tooms;1915516;M;1
+135;Croaa Croaa;1915553;H;0
+137;Citron - Sucre;1915569;H;0
+139;Sucre - Citron;1915558;H;0
+141;Rising Pengyous;1915567;H;0
+67;Les entêtés;1915544;H;1
+143;Les danseurs;1915527;M;0
+70;Les douaisiens;1915543;H;1
+72;Les Pognons;1915545;H;1
+73;Matalang;1915556;M;1
+76;CWBAF - Could we BE any faster ?;1915557;F;1
+78;Hors Sol;1915531;M;1
+79;Poco;1915575;H;1
+101;MGO TC3;1915515;H;0
+1;Les Basco Solognots;1915547;M;1
+104;Les déboussolés;1915562;M;0
+159;EY1;1915554;M;0
+91;Atlas;1915568;H;1
+156;Sucré Salé;1915517;H;0
+97;EY2;1915532;M;1
+161;EY3;1915518;M;0
+99;EY4;1915530;H;1
+82;Vas y ma gueule! ;1915548;M;1
+146;Yvette Ornières;1915570;H;0
+83;Lespasdouesfontducanoe;1915533;F;1
+147;La villa;1915563;H;0
+150;El Kanfoud;1000947;H;0
+151;Les Carnotins;1000950;H;0
+153;MILF HUNTERS;1000946;H;0
+86;Les Rats'zé;2041706;H;1
+88;DSA;2018954;H;1
+90;CHAVILLE ATHLETISME;2011983;H;1
+93;CQRunner;2003008;H;1
+95;Michaloup;2018959;M;1
+157;ARDENT SPORTS;2003029;M;0
