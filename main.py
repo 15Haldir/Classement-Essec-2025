@@ -4,16 +4,28 @@ import pandas as pd
 import Scripts.utils as u
 import Scripts.epreuve as e
 import Scripts.equipe as eq
+import sys
 
-parcours = d.data_parcours()
 peloton = eq.Peloton()
-peloton.construct("Data_equipes_parcours/")
-path = "./Resultat_brut/"
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == "J1":
+        path = "./Essec_J1/Resultat_brut/"
+        peloton.construct("./Essec_J1/Data_equipes_parcours/")
+        parcours = d.data_parcours("./Essec_J1/Data_equipes_parcours/")
+    elif sys.argv[1] == "J2":
+        path = "./Essec_J2/Resultat_brut/"
+        peloton.construct("./Essec_J2/Data_equipes_parcours/")
+        parcours = d.data_parcours("./Essec_J2/Data_equipes_parcours/")
+    else:
+        print("Argument non reconnu, le programme va s'arrêter.")
+        sys.exit(1)
+
 
 # print([parcours.epreuves[i].nom for i in range(len(parcours.epreuves))])
 # print([parcours.epreuves[i].type for i in range(len(parcours.epreuves))])
 # print([[parcours.epreuves[i].ordre_badgeuse[j].numero for j in range(len(parcours.epreuves[i].ordre_badgeuse))] for i in range(len(parcours.epreuves)) if parcours.epreuves[i].type == "obli"])
-res = t.gather_results(parcours)
+res = t.gather_results(parcours, path)
 res_acti = t.traite_data_actis(path)
 res_co = t.traite_datas_co(path)
 res_penalties = t.traite_datas_penalties(path)

@@ -3,7 +3,8 @@ import os
 import pandas as pd
 import Scripts.utils as u
 
-def create_total_data():
+# ne pas utiliser 
+def create_total_data(path):
     L_data_graid = []
     for file_name in os.listdir("""Resultat_brut/Data_graids"""):
         print(file_name)
@@ -11,14 +12,14 @@ def create_total_data():
     res = pd.concat(L_data_graid)
     (res.drop(res.columns[0], axis=1)).to_csv("Resultat_brut/data_graid_final.csv", sep = ";") 
 
-def traite_data_graid(parcours):
+def traite_data_graid(parcours, path):
 
     """
     Prend en entrée le fichier datas_graid.csv et retourne un dictionnaire avec comme clés le numéro de doigts de l'équipe et comme valeur une liste de couple badgeuse/temps 
     """
-    D_correction = traite_data_correction('Resultat_brut/')
+    D_correction = traite_data_correction(path)
 
-    with open('Resultat_brut/datas_graid.csv', 'r', newline='') as csvfile:
+    with open(path + 'datas_graid.csv', 'r', newline='') as csvfile:
         reader = csv.reader(csvfile, delimiter = '@')
         data = list(reader)
         data_par_equipe = {}
@@ -71,7 +72,7 @@ def clear_anomalies(res_equipe):
     return res_equipe_clear
 
 
-def gather_results(parcours):
+def gather_results(parcours, path):
 
     """
     doigts est un dictionnaire avec comme clé le numéro de doigts de l'équipe et comme valeur une liste de couple badgeuse/temps
@@ -81,7 +82,7 @@ def gather_results(parcours):
     - pour chaque épreuve, on a un dictionnaire avec comme clé les badgeuses et comme valeur une liste de couple numero de badgeuse/temps
     """
 
-    doigts = traite_data_graid(parcours)
+    doigts = traite_data_graid(parcours, path)
     res = {}
 
     for epreuve in parcours.epreuves:

@@ -1,7 +1,6 @@
 import pandas as pd
 import Scripts.utils as u
 
-
 class Badgeuse():
 
     def __init__(self, numero, fonction, signaleur, gain_temps=0, obligatoire = False, repetable=False, h_mass_start=None):
@@ -164,6 +163,9 @@ class data_obli(data_epreuve_avec_doigts):
         for signaleur in D.keys():
             badgeuse_associe = D[signaleur][0][0]
             if not badgeuse_associe.repetable:
+                if badgeuse_associe.numero == 34:
+                    equipe.a_vu_bo = True
+
                 if badgeuse_associe.fonction == "gel":
                     D[signaleur] = [D[signaleur][-1][1]]
                 elif badgeuse_associe.fonction == "degel":
@@ -292,9 +294,9 @@ class data_parcours():
     tout celà est indépendant de ce qu'il y a au-dessus
     rajouter une badgeuse 0 dans le fichier des badgeuse si on a une masse start
     """
-    def __init__(self):
+    def __init__(self, path):
 
-        df = pd.read_csv("Data_equipes_parcours/POLIS_parcours.csv", sep=";")
+        df = pd.read_csv(path + "POLIS_parcours.csv", sep=";")
         self.epreuves = []
         for i in range(df.shape[0]):
             row = df.iloc[i]
@@ -303,7 +305,7 @@ class data_parcours():
             elif row["type"] == "co":
                 epreuve = data_epreuve_co(row["nom"], row["participation"])
             else: 
-                POLIS_badgeuse = pd.read_csv("Data_equipes_parcours/POLIS_badgeuses.csv", sep=";")
+                POLIS_badgeuse = pd.read_csv(path + "POLIS_badgeuses.csv", sep=";")
                 L_badgeuse = self.create_L_badgeuse(row["nom"], POLIS_badgeuse)
                 if row["type"] == "Obli":
                     epreuve = data_obli(row["nom"], L_badgeuse)
