@@ -8,6 +8,7 @@ import sys
 
 peloton = eq.Peloton()
 
+
 if len(sys.argv) > 1:
     if sys.argv[1] == "J1":
         path = "./Essec_J1/Resultat_brut/"

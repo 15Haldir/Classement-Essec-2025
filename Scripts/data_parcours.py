@@ -163,8 +163,6 @@ class data_obli(data_epreuve_avec_doigts):
         for signaleur in D.keys():
             badgeuse_associe = D[signaleur][0][0]
             if not badgeuse_associe.repetable:
-                if badgeuse_associe.numero == 34:
-                    equipe.a_vu_bo = True
 
                 if badgeuse_associe.fonction == "gel":
                     D[signaleur] = [D[signaleur][-1][1]]
@@ -180,6 +178,8 @@ class data_obli(data_epreuve_avec_doigts):
                     raise ValueError(f"la badgeuse {badgeuse_associe.numero} n'est pas répétable et n'a pas de fonction valide")
                 L_badgeuse_final.append((badgeuse_associe,D[signaleur][0]))
             else:
+
+
                 for occurence in D[signaleur]:
                     L_badgeuse_final.append(occurence)
 

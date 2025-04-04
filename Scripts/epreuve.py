@@ -122,6 +122,9 @@ class EpreuveObli(Epreuve):
         for equipe in self.res_obli.keys():
             compteur = 0
             temps_effectif = 0
+
+            real_equipe = peloton.find_equipe_doigts(equipe)
+
             while compteur < len(self.res_obli[equipe])-1:
                 if self.res_obli[equipe][compteur][0].fonction == "depart":
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1] - self.res_obli[equipe][compteur][0].gain_temps
@@ -134,7 +137,9 @@ class EpreuveObli(Epreuve):
                 elif self.res_obli[equipe][compteur][0].fonction == "fin":
                     temps_effectif -= self.res_obli[equipe][compteur][0].gain_temps
                 compteur += 1
-            real_equipe = peloton.find_equipe_doigts(equipe)
+                if self.res_obli[equipe][compteur][0].numero == 34:
+                    real_equipe.a_vu_bo = True
+
             self.classer(real_equipe, temps_effectif)
             real_equipe.add_epreuves(self.nom, temps_effectif)
         
@@ -158,6 +163,7 @@ class EpreuveBo(Epreuve):
             
 
             # print(self.res_bo)
+            real_equipe = peloton.find_equipe_doigts(equipe)
             while compteur <= len(self.res_bo[equipe])-2:
                 if self.res_bo[equipe][compteur][0].fonction == "depart":
                     temps_effectif += self.res_bo[equipe][compteur+1][1] - self.res_bo[equipe][compteur][1] - self.res_bo[equipe][compteur][0].gain_temps
@@ -171,7 +177,7 @@ class EpreuveBo(Epreuve):
                     temps_effectif -= self.res_bo[equipe][compteur][0].gain_temps
                 compteur += 1
 
-            real_equipe = peloton.find_equipe_doigts(equipe)
+
             self.classer(real_equipe, temps_effectif)
             real_equipe.add_epreuves(self.nom, temps_effectif)
         
