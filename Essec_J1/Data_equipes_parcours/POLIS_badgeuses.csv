@@ -15,15 +15,15 @@ Obli 3;R55bis;6;depart;0;;2;
 Obli 3;A57;7;gel;0;;1;
 Obli 3;A57bis;7;degel;0;;2;
 Obli 3;C58;18;gel_1_point;1800;;1;
-Obli 3;A64;19;gel;;;1
-Obli 3;A65;20;degel;;;1
+Obli 3;A64;19;gel;0;;1;
+Obli 3;A65;20;degel;0;;1;
 Obli 3;A68;9;gel;0;;1;
 Obli 3;A68bis;10;degel;0;;1;
 Obli 3;C70;34;gel_1_point;0;;1;
 Obli 3;C75;11;gel;0;;1;
-Obli 3;C75;11;degel;0;;2; #gels 2 balises
+Obli 3;C75;11;degel;0;;2;
 Obli 3;A80;21;gel;0;;1;
-Obli 3;A81;22;gel;0;;1;
+Obli 3;A81;22;degel;0;;1;
 Obli 3;CPCanoe;15;fin;0;;1;
 Obli Canoe;CPCanoe2;15;depart;0;;2;
 Obli Canoe;R83;16;fin;0;;1;
