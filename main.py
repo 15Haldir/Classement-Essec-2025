@@ -8,6 +8,9 @@ import sys
 
 peloton = eq.Peloton()
 
+if len(sys.argv) == 1:
+    print("Aucun argument donné, le programme va s'arrêter.")
+    sys.exit(1)
 
 if len(sys.argv) > 1:
     if sys.argv[1] == "J1":
@@ -85,7 +88,8 @@ for epreuve in res.keys():
 for type in peloton.equipes.keys():
     for equipe in peloton.equipes[type]:
         equipe.temps_total += res_penalties[equipe.numero]
-        equipe.traite_bo()
+        if sys.argv[1] == "J1":
+            equipe.traite_bo()
 
 if len(sys.argv) > 1:
     if sys.argv[1] == "J1":
