@@ -1,0 +1,12 @@
+epreuve;signaleur;numero;fonction;temps bonus;obligatoire;repetable;heure mass start
+Obli 1;S1;0;depart;0;;1;08:00
+Obli 1;S11;10;gel_1_point;30;;1;
+Obli 1;S7;7;gel;0;;1;
+Obli 1;Spiquet 3;8;degel;0;;1;
+Obli 1;S5;1;fin;0;;1;
+Grimpeur 1;VB1;6;depart;0;;1;
+Grimpeur 1;Spiquet 1;5;fin;0;;1;
+BO2;S12;11;depart;4800;;1;
+BO2;S12p;11;gel;0;;2;
+BO2;S12i;11;degel;0;;3;
+BO2;S12piquet;11;fin;0;;4;
