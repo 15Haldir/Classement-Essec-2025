@@ -86,4 +86,9 @@ for type in peloton.equipes.keys():
         equipe.temps_total += res_penalties[equipe.numero]
         equipe.traite_bo()
 
-u.res_final_to_csv(res_final)
+if len(sys.argv) > 1:
+    if sys.argv[1] == "J1":
+        path = "./Essec_J1/"
+    elif sys.argv[1] == "J2":
+        path = "./Essec_J2/"
+u.res_final_to_csv(res_final, path)

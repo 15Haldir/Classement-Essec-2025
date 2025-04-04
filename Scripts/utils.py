@@ -49,7 +49,7 @@ def prep_res_to_csv(res):
     """
     return {epreuve.nom: {(equipe.numero, equipe.mixite, equipe.ent, equipe.nom, equipe.temps_total) : res_num for mixite in res[epreuve] for (equipe, res_num) in res[epreuve][mixite]}for epreuve in res}
 
-def res_final_to_csv(res_final):
+def res_final_to_csv(res_final, path):
     
     res = prep_res_to_csv(res_final)
     # Get all unique teams
@@ -59,7 +59,7 @@ def res_final_to_csv(res_final):
     races = sorted(res.keys())
 
     # Create CSV file
-    csv_filename = "race_results.csv"
+    csv_filename = path + "race_results.csv"
     with open(csv_filename, mode="w", newline="") as file:
         writer = csv.writer(file, delimiter=";")
         
