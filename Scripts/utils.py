@@ -75,6 +75,7 @@ def res_final_to_csv(res_final, path):
 
 def return_fusion_result(path1, path2):
     result = {}
+    team = {}
     with open(path1 + "race_results.csv", mode="r", newline="") as file1:
         reader1 = csv.reader(file1, delimiter=";")
         header1 = next(reader1)
