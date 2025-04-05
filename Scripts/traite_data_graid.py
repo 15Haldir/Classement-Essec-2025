@@ -67,9 +67,9 @@ def clear_anomalies(res_equipe):
     if i == len(res_equipe)-1:
         (num_badgeuse,temps) = res_equipe[i]
         res_equipe_clear.append((num_badgeuse,temps))
-    
-
     return res_equipe_clear
+
+
 
 
 def gather_results(parcours, path):

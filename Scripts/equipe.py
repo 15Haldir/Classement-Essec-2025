@@ -31,6 +31,10 @@ class Equipe():
     def traite_bo(self):
         if self.a_vu_bo and self.ent :
             self.temps_total -= 60*45
+        # if self.numero == 139:
+            # print(self.nom)
+            # print(bool(self.ent))
+            # a=1/0
 
         if not self.a_vu_bo and not self.ent:
             self.temps_total += 60*50
@@ -38,6 +42,7 @@ class Equipe():
     def traite_type(self):
         if not self.ent :
             self.temps_total -= 60*20
+
 
 
 

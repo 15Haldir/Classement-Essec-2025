@@ -104,4 +104,21 @@ def return_fusion_result(path1, path2):
                 writer.writerow([team] + result[team][:-1])
     pass
 
-print(heure_from_sec(21257))
+
+def L_badgeuse_valide(res_equipe, equipe, epreuve): 
+
+    res_equipe_clear = []
+    i = 0
+    while i <len(res_equipe)-1:
+        (badgeuse,temps) = res_equipe[i]
+        (badgeuse_suivante, temps_suivant) = res_equipe[i+1]
+        if badgeuse.fonction != "gel":
+            res_equipe_clear.append((badgeuse,temps))
+        else : 
+            if badgeuse_suivante.fonction == "degel":
+                res_equipe_clear.append((badgeuse,temps))
+        i+=1
+    
+    res_equipe_clear.append((res_equipe[-1][0], res_equipe[-1][1]))
+    return res_equipe_clear
+

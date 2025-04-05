@@ -1,4 +1,4 @@
-
+import Scripts.utils as u
 """
 Le type d'acti possible est 
 -CO (on les gère éventuellement avec des gels/dégels ou avec un gel/gain de temps)
@@ -123,9 +123,7 @@ class EpreuveObli(Epreuve):
             temps_effectif = 0
 
             real_equipe = peloton.find_equipe_doigts(equipe)
-            print(equipe)
-
-
+            self.res_obli[equipe] = u.L_badgeuse_valide(self.res_obli[equipe], real_equipe, self.nom)
             while compteur < len(self.res_obli[equipe])-1:
                 if self.res_obli[equipe][compteur][0].fonction == "depart":
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1] - self.res_obli[equipe][compteur][0].gain_temps
@@ -140,6 +138,15 @@ class EpreuveObli(Epreuve):
                 compteur += 1
                 if self.res_obli[equipe][compteur][0].numero == 34:
                     real_equipe.a_vu_bo = True
+                
+            if real_equipe.numero == 139 and self.nom == "Obli 3":
+                print(real_equipe.nom)
+                print(equipe)
+                print([self.res_obli[1915558][i][0].fonction for i in range(len(self.res_obli[1915558]))])
+                print([self.res_obli[1915569][i][0].fonction for i in range(len(self.res_obli[1915569]))])
+                print([self.res_obli[1000947][i][0].fonction for i in range(len(self.res_obli[1000947]))])
+                a=1/0
+
 
             self.classer(real_equipe, temps_effectif)
             real_equipe.add_epreuves(self.nom, temps_effectif)
