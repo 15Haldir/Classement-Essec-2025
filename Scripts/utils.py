@@ -102,3 +102,5 @@ def return_fusion_result(path1, path2):
             if result[team][-1]:
                 writer.writerow([team] + result[team][:-1])
     pass
+
+print(heure_from_sec(8932))

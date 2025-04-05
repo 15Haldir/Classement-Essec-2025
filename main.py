@@ -107,13 +107,21 @@ for type in peloton.equipes.keys():
         if sys.argv[1] == "J1":
             print(f"Equipe {equipe.numero} : {u.heure_from_sec(equipe.temps_total)}")
 
-for epreuve, classement in res_final.items():
-        print(f"\nRésultats pour l'épreuve : {epreuve.nom}")
-        for categorie, equipes in classement.items():
-            print(f"  Catégorie : {categorie}")
-            # Trier les équipes par temps croissant
-            equipes_triees = sorted(equipes, key=lambda x: x[1])
-            for equipe, temps in equipes_triees:
-                print(f"    Équipe {equipe.numero} : {u.heure_from_sec(temps)}")
+def affiche_resultats_generaux(peloton):
+    """
+    Affiche les résultats généraux triés par temps total croissant.
+    """
+    equipes = []
+    for type in peloton.equipes.keys():
+        for equipe in peloton.equipes[type]:
+            equipes.append((equipe.numero, equipe.temps_total))
+    
+    # Trier les équipes par temps total croissant
+    equipes_triees = sorted(equipes, key=lambda x: x[1])
+    
+    print("\nRésultats généraux :")
+    for rank, (numero, temps_total) in enumerate(equipes_triees, start=1):
+        print(f"{rank}. Équipe {numero} : {u.heure_from_sec(temps_total)}")
 
+affiche_resultats_generaux(peloton)
 u.res_final_to_csv(res_final, path)
