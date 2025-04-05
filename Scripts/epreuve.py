@@ -81,8 +81,7 @@ class Epreuve_acti(Epreuve):
                     self.classer(equipe, -res_epreuve) #l'équipe n'est classé sur l'acti que si elle a participé 
                     equipe.add_epreuves(self.nom, -res_epreuve) 
             else:
-                print(f"Erreur : l'équipe {num_equipe} n'existe pas dans le peloton")
-                a=1/0
+                raise ValueError(f"Erreur : l'équipe {num_equipe} n'existe pas dans le peloton")
 
 
 class EpreuveGrimpeur(Epreuve):

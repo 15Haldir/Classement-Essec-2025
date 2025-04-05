@@ -72,3 +72,33 @@ def res_final_to_csv(res_final, path):
             writer.writerow(row)
 
     print(f"CSV file '{csv_filename}' has been created successfully!")
+
+def return_fusion_result(path1, path2):
+    result = {}
+    with open(path1 + "race_results.csv", mode="r", newline="") as file1:
+        reader1 = csv.reader(file1, delimiter=";")
+        header1 = next(reader1)
+        for row in reader1:
+            team = row[:5] + [False]
+            team[-2] = int(team[-2])
+            result[team[0]] = team[1:]
+    
+    with open(path2 + "race_results.csv", mode="r", newline="") as file2:
+        reader2 = csv.reader(file2, delimiter=";")
+        header2 = next(reader2)
+        for row in reader2:
+            team = row[:5] + [False]
+            team[-2] = int(team[-2])
+            if team[0] in result:
+                result[team[0]][-2] += team[-2]
+                result[team[0]][-1] = True
+            else:
+                result[team[0]] = team[1:]
+    
+    with open("fusion_results.csv", mode="w", newline="") as file:
+        writer = csv.writer(file, delimiter=";")
+        writer.writerow(["Team"] + ["Mixite"] + ["Ent"] + ["Nom"] +["Temps total"])
+        for team in result.keys():
+            if result[team][-1]:
+                writer.writerow([team] + result[team][:-1])
+    pass

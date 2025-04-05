@@ -79,9 +79,6 @@ class data_epreuve_avec_doigts(data_epreuve):
         if not self.is_L_badgeuse_valide(L_badgeuse):
             raise ValueError(f"erreur dans la construction de l'épreuve {nom}, on a {[L_badgeuse[i].numero for i in range(len(L_badgeuse))]}")
 
-            print(f"erreur dans la construction de l'épreuve {nom}, on a {[L_badgeuse[i].numero for i in range(len(L_badgeuse))]}")
-            a=1/0
-
     def is_L_badgeuse_valide(self, L_badgeuse):
         pass
 
@@ -130,8 +127,7 @@ class data_obli(data_epreuve_avec_doigts):
                     i+=1
             return res           
         else :
-            print("rajouter une erreur pour quand on a mal configuré le parcours, sinon, ça foire")
-            a=1/0
+            raise TypeError(f"erreur dans la construction de l'épreuve {self.nom}, on a {[L_badgeuse[i].numero for i in range(len(L_badgeuse))]}")
     
     def traite_doigts (self, L_badgeuse, equipe):
         """
@@ -277,8 +273,7 @@ class data_Grimpeur(data_epreuve_avec_doigts):
         if len(L_badgeuse)==2: 
             return (L_badgeuse[0].fonction == "depart" and L_badgeuse[-1].fonction == "fin")
         else :
-            print("rajouter une erreur pour quand on a mal configuré le parcours, sinon, ça foire")
-            a=1/0
+            raise ValueError(f"erreur dans la construction de l'épreuve {self.nom}, on a {[L_badgeuse[i].numero for i in range(len(L_badgeuse))]}")
     
     def traite_doigts (self, L_badgeuse, equipe):
         if L_badgeuse[0][0].fonction == "depart" and L_badgeuse[-1][0].fonction == "fin":
@@ -314,8 +309,7 @@ class data_parcours():
                 elif row["type"] == "Grimpeur":
                     epreuve = data_Grimpeur(row["nom"], row["participation"], L_badgeuse)
                 else:
-                    print(f"Erreur : le type {row['type']} n'est pas un type d'épreuve valide")
-                    a=1/0
+                    raise TypeError(f"Erreur : le type {row['type']} n'est pas un type d'épreuve valide")
             # if epreuve.nom == "Obli 2":
             #     print(epreuve.nom, epreuve.ordre_badgeuse[0].h_mass_start)
             #     a=1/0

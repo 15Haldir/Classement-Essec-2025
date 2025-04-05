@@ -63,12 +63,12 @@ class Peloton():
             for i in range(1,len(data)):
                 row = data[i][0].split(";")
                 if row[3] in ["H", "F", "M", "Hent", "Fent", "Ment"]:
-                    print(row)
+                    # print(row)
                     equipe = Equipe(int(row[0]), row[1], int(row[2]), row[3],  ent = int(row[4]))
                     self.ajoute_equipe(equipe)
                 else:
-                    print(f"Erreur : l'équipe {int(row[0])}, {row[3]} n'est pas un type de mixité valide")
-                    a=1/0 
+                    # print(f"Erreur : l'équipe {int(row[0])}, {row[3]} n'est pas un type de mixité valide")
+                    raise ValueError(f"Erreur : l'équipe {int(row[0])}, {row[3]} n'est pas un type de mixité valide")
             
     def find_equipe_doigts(self, doigts):
         for mixite in self.equipes.keys():
