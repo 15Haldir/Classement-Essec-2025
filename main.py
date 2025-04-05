@@ -100,4 +100,20 @@ if len(sys.argv) > 1:
         path = "./Essec_J1/"
     elif sys.argv[1] == "J2":
         path = "./Essec_J2/"
+
+for type in peloton.equipes.keys():
+    for equipe in peloton.equipes[type]:
+        equipe.temps_total += res_penalties[equipe.numero]
+        if sys.argv[1] == "J1":
+            print(f"Equipe {equipe.numero} : {u.heure_from_sec(equipe.temps_total)}")
+
+for epreuve, classement in res_final.items():
+        print(f"\nRésultats pour l'épreuve : {epreuve.nom}")
+        for categorie, equipes in classement.items():
+            print(f"  Catégorie : {categorie}")
+            # Trier les équipes par temps croissant
+            equipes_triees = sorted(equipes, key=lambda x: x[1])
+            for equipe, temps in equipes_triees:
+                print(f"    Équipe {equipe.numero} : {u.heure_from_sec(temps)}")
+
 u.res_final_to_csv(res_final, path)
