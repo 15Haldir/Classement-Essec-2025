@@ -84,9 +84,9 @@ for epreuve in res.keys():
 
 
     print("\n")
-    # print(f"Classement pour l'épreuve {epreuve.nom} :")
-    # for mixite in res_final[epreuve].keys():
-    #     print(f"Mixité {mixite} : {[(res_final[epreuve][mixite][i][0].numero,u.heure_from_sec(res_final[epreuve][mixite][i][1])) for i in range(len(res_final[epreuve][mixite]))]}")
+    print(f"Classement pour l'épreuve {epreuve.nom} :")
+    for mixite in res_final[epreuve].keys():
+        print(f"Mixité {mixite} : {[(res_final[epreuve][mixite][i][0].numero,u.heure_from_sec(res_final[epreuve][mixite][i][1])) for i in range(len(res_final[epreuve][mixite]))]}")
 
 for type in peloton.equipes.keys():
     for equipe in peloton.equipes[type]:
