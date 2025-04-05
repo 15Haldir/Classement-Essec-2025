@@ -34,6 +34,12 @@ class Equipe():
 
         if not self.a_vu_bo and not self.ent:
             self.temps_total += 60*50
+    
+    def traite_type(self):
+        if not self.ent :
+            self.temps_total -= 60*20
+
+
 
 
     

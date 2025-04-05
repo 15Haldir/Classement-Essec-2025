@@ -1,5 +1,5 @@
 epreuve;signaleur;numero;fonction;temps bonus;obligatoire;repetable;heure mass start
-Obli 1;S0;0;depart;0;;1;08:00
+Obli 1;S0;0;depart;0;;1;09:15
 Obli 1;R15;1;fin;0;;1;
 Obli 2;R15bis;1;depart;0;;2;
 Obli 2;A23;2;gel;0;;1;

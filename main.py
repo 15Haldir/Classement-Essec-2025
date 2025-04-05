@@ -90,6 +90,7 @@ for type in peloton.equipes.keys():
         equipe.temps_total += res_penalties[equipe.numero]
         if sys.argv[1] == "J1":
             equipe.traite_bo()
+            equipe.traite_type()
 
 if len(sys.argv) > 1:
     if sys.argv[1] == "J1":
