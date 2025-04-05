@@ -103,4 +103,4 @@ def return_fusion_result(path1, path2):
                 writer.writerow([team] + result[team][:-1])
     pass
 
-print(heure_from_sec(8932))
+print(heure_from_sec(21257))
