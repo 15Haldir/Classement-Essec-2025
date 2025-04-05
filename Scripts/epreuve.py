@@ -124,6 +124,7 @@ class EpreuveObli(Epreuve):
 
             real_equipe = peloton.find_equipe_doigts(equipe)
 
+
             while compteur < len(self.res_obli[equipe])-1:
                 if self.res_obli[equipe][compteur][0].fonction == "depart":
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1] - self.res_obli[equipe][compteur][0].gain_temps
