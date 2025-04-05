@@ -139,13 +139,13 @@ class EpreuveObli(Epreuve):
                 if self.res_obli[equipe][compteur][0].numero == 34:
                     real_equipe.a_vu_bo = True
                 
-            if real_equipe.numero == 139 and self.nom == "Obli 3":
-                print(real_equipe.nom)
-                print(equipe)
-                print([self.res_obli[1915558][i][0].fonction for i in range(len(self.res_obli[1915558]))])
-                print([self.res_obli[1915569][i][0].fonction for i in range(len(self.res_obli[1915569]))])
-                print([self.res_obli[1000947][i][0].fonction for i in range(len(self.res_obli[1000947]))])
-                a=1/0
+            # if real_equipe.numero == 139 and self.nom == "Obli 3":
+            #     print(real_equipe.nom)
+            #     print(equipe)
+            #     print([(self.res_obli[1915558][i][0].fonction, self.res_obli[1915558][i][1])for i in range(len(self.res_obli[1915558]))])
+            #     print([(self.res_obli[1915569][i][0].fonction, self.res_obli[1915569][i][1]) for i in range(len(self.res_obli[1915569]))])
+            #     print([(self.res_obli[1000947][i][0].fonction, self.res_obli[1000947][i][1]) for i in range(len(self.res_obli[1000947]))])
+            #     a=1/0
 
 
             self.classer(real_equipe, temps_effectif)
