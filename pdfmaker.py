@@ -12,7 +12,25 @@ def create_pdf(mixite="H", ent=0):
     # Create the PDF document
     filename = f'classement_{mixite}_{"Evasion" if ent==1 else "Challenge"}.pdf'
     doc = SimpleDocTemplate(filename, pagesize=letter)
+
+    # store if teams are on saturday, sunday or both
+    teams = {}
+    with open('./Essec_J1/equipe.csv', 'r') as file:
+        csv_reader = csv.reader(file, delimiter='@')
+        for row in csv_reader:
+            data = row[0].split(";")
+            teams[data[0]] = [data[1], 'Samedi']
     
+    with open('./Essec_J2/equipe.csv', 'r') as file:
+        csv_reader = csv.reader(file, delimiter='@')
+        for row in csv_reader:
+            data = row[0].split(";")
+            if data[0] in teams.keys()
+                teams[data[0]][1] = 'Weekend'
+            else:
+                teams[data[0]] = [data[1], 'Dimanche']
+    
+
     # Create a list to store the elements
     elements = []
 
@@ -35,8 +53,8 @@ def create_pdf(mixite="H", ent=0):
     data = [['Classement', 'Equipe', 'Temps']]
     
     # Read data from CSV file
-    results_path = './Essec_J1/race_results.csv' if sys.argv[3] == "J1" else './Essec_J2/race_results.csv'
-    with open('./Essec_J1/race_results.csv', 'r') as file:
+    results_path = './Essec_J1/race_results.csv' if sys.argv[3] == "J1" else './Essec_J2/race_results.csv' if sys.argv[3] == "J2" else 'fusion_results.csv'
+    with open(results_path, 'r') as file:
         csv_reader = csv.reader(file)
         next(csv_reader)  # Skip header row
         for row in csv_reader:

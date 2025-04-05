@@ -101,11 +101,10 @@ if len(sys.argv) > 1:
     elif sys.argv[1] == "J2":
         path = "./Essec_J2/"
 
-for type in peloton.equipes.keys():
-    for equipe in peloton.equipes[type]:
-        equipe.temps_total += res_penalties[equipe.numero]
-        if sys.argv[1] == "J1":
-            print(f"Equipe {equipe.numero} : {u.heure_from_sec(equipe.temps_total)}")
+# for type in peloton.equipes.keys():
+#     for equipe in peloton.equipes[type]:
+#         if sys.argv[1] == "J1":
+#             print(f"Equipe {equipe.numero} : {u.heure_from_sec(equipe.temps_total)}")
 
 def affiche_resultats_generaux(peloton):
     """

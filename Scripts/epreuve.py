@@ -123,6 +123,7 @@ class EpreuveObli(Epreuve):
             temps_effectif = 0
 
             real_equipe = peloton.find_equipe_doigts(equipe)
+            print(equipe)
 
 
             while compteur < len(self.res_obli[equipe])-1:
