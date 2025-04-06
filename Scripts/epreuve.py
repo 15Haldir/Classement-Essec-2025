@@ -135,9 +135,12 @@ class EpreuveObli(Epreuve):
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1]-self.res_obli[equipe][compteur][0].gain_temps
                 elif self.res_obli[equipe][compteur][0].fonction == "fin":
                     temps_effectif -= self.res_obli[equipe][compteur][0].gain_temps
-                compteur += 1
+                    if self.res_obli[equipe][compteur][0].numero == 10:
+                        a=1/0
                 if self.res_obli[equipe][compteur][0].numero == 34:
                     real_equipe.a_vu_bo = True
+                compteur += 1
+
                 
             # if real_equipe.numero == 139 and self.nom == "Obli 3":
             #     print(real_equipe.nom)
@@ -149,9 +152,11 @@ class EpreuveObli(Epreuve):
 
             try:
                 self.classer(real_equipe, temps_effectif)
+                real_equipe.add_epreuves(self.nom, temps_effectif)
             except:
-                print(f"Doigt {equipe} n'est pas dans le equipe.csv")
-            real_equipe.add_epreuves(self.nom, temps_effectif)
+                a=1
+                # raise ValueError(f"Doigt {equipe} n'est pas dans le equipe.csv")
+            
         
         for type_equipe in self.classement.keys():
             self.classement[type_equipe].sort(key = lambda x: x[1])

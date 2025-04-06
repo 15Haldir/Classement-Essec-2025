@@ -107,6 +107,9 @@ def return_fusion_result(path1, path2):
 
 def L_badgeuse_valide(res_equipe, equipe, epreuve): 
 
+    if res_equipe == None:
+        return None
+
     res_equipe_clear = []
     i = 0
     while i <len(res_equipe)-1:
@@ -118,7 +121,9 @@ def L_badgeuse_valide(res_equipe, equipe, epreuve):
             if badgeuse_suivante.fonction == "degel":
                 res_equipe_clear.append((badgeuse,temps))
         i+=1
-    
-    res_equipe_clear.append((res_equipe[-1][0], res_equipe[-1][1]))
-    return res_equipe_clear
+    try:
+        res_equipe_clear.append((res_equipe[-1][0], res_equipe[-1][1]))
+        return res_equipe_clear
+    except:
+        raise ValueError(f"Erreur dans l'épreuve {epreuve} pour l'équipe {equipe.numero} : {res_equipe}")
 

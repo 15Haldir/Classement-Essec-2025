@@ -94,9 +94,9 @@ class data_epreuve_avec_doigts(data_epreuve):
                 D_test[badgeuse.signaleur] +=1
 
         D_ref = {self.ordre_badgeuse[i].signaleur:0 for i in range(len(self.ordre_badgeuse)) if self.ordre_badgeuse[i].obligatoire}
-        for bagdgeuse in self.ordre_badgeuse:
+        for badgeuse in self.ordre_badgeuse:
             if badgeuse.obligatoire:
-                D_ref[bagdgeuse.signaleur] += 1
+                D_ref[badgeuse.signaleur] += 1
 
         for signaleur in D_ref.keys():
             if D_test[signaleur] !=D_ref[signaleur]:
