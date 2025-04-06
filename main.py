@@ -60,6 +60,10 @@ for epreuve in res.keys():
         epreuve_a_classer.make_classement(peloton)
         res_final[epreuve] = epreuve_a_classer.classement
 
+        if epreuve.nom == "Obli CO":
+            print(res_co)
+            res_final[epreuve] = {mixite: [(res_final[epreuve][mixite][i][0],res_final[epreuve][mixite][i][1] - res_co[res_final[epreuve][mixite][i][0].numero]) for i in range(len(res_final[epreuve][mixite]))] for mixite in res_final[epreuve].keys()}
+
     elif epreuve.type == "grimpeur":
         epreuve_a_classer = e.EpreuveGrimpeur(parcours, epreuve, res[epreuve])
         epreuve_a_classer.make_classement(peloton)
@@ -77,9 +81,10 @@ for epreuve in res.keys():
         res_final[epreuve] = epreuve_a_classer.classement
 
     elif epreuve.type == "co":
-        epreuve_a_classer = e.Epreuve_co(peloton, epreuve, res_co)
-        epreuve_a_classer.make_classement()
-        res_final[epreuve] = epreuve_a_classer.classement
+        if not sys.argv[1] == "J2":
+            epreuve_a_classer = e.Epreuve_co(peloton, epreuve, res_co)
+            epreuve_a_classer.make_classement()
+            res_final[epreuve] = epreuve_a_classer.classement
     
 
 
