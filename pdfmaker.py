@@ -98,17 +98,24 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     
     # Sample data for the table
     data = [['Classement', 'Equipe', 'Temps']]
+
+    team_in_list = []
+    teams_full_results = {}
+
+    header_teams = []
     
     # Read data from CSV file
     results_path = './Essec_J1/race_results.csv' if journee == "J1" else './Essec_J2/race_results.csv' if journee == "J2" else './fusion_results.csv'
     with open(results_path, 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file)
-        next(csv_reader)  # Skip header row
+        header_teams = next(csv_reader)[0].split(';')  # Skip header row
         for row in csv_reader:
             row = row[0].split(";")
+            teams_full_results[row[3]] = row
             if teams[row[3]][1] == journee:
                 if (row[1] == mixite and int(row[2]) == ent) or mixite == "scratch":
                     data.append([0, row[3], u.heure_from_sec(int(row[4]))])
+                    team_in_list.append([row[0], row[3]])
         # Sort data based on the time (last column)
         data[1:] = sorted(data[1:], key=lambda x: x[2])
 
@@ -132,6 +139,34 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     
     # Build the PDF
     doc.build(elements, onFirstPage=add_page_number, onLaterPages=add_page_number)
+
+    # Création des fiches de chaque équipe
+    for team in team_in_list:
+        team_filename = f'./Resultats finaux/PDF/teams/equipe_{team[0]}.pdf'
+        team_doc = SimpleDocTemplate(team_filename, pagesize=letter)
+        team_elements = []
+        
+        # Add title
+        team_title = Paragraph(f"Équipe {team[0]}", styles['Title'])
+        team_elements.append(team_title)
+        
+        team_name = Paragraph(f"Nom: {team[1]}", styles['Heading2'])
+        team_elements.append(team_name)
+        
+        # Add team data in table format
+        team_data = [[header_teams[i], teams_full_results[team[1]][i]] for i in range(len(header_teams))]
+        
+        team_table = Table(team_data)
+        team_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
+            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ]))
+        team_elements.append(team_table)
+        
+        team_doc.build(team_elements, onFirstPage=add_page_number, onLaterPages=add_page_number)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
