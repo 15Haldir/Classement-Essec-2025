@@ -70,7 +70,6 @@ for epreuve in res.keys():
         res_final[epreuve] = epreuve_a_classer.classement
 
     elif epreuve.type == "bo":
-
         epreuve_a_classer = e.EpreuveBo(parcours, epreuve, res[epreuve])
         epreuve_a_classer.make_classement(peloton)   
         res_final[epreuve] = epreuve_a_classer.classement

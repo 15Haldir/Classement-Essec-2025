@@ -111,6 +111,7 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
                     data.append([0, row[3], u.heure_from_sec(int(row[4]))])
         # Sort data based on the time (last column)
         data[1:] = sorted(data[1:], key=lambda x: x[2])
+
         # Update rankings
         for i in range(1, len(data)):
             data[i][0] = "#" + str(i)  # Add ranking number
