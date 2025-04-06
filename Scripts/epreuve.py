@@ -147,8 +147,10 @@ class EpreuveObli(Epreuve):
             #     print([(self.res_obli[1000947][i][0].fonction, self.res_obli[1000947][i][1]) for i in range(len(self.res_obli[1000947]))])
             #     a=1/0
 
-
-            self.classer(real_equipe, temps_effectif)
+            try:
+                self.classer(real_equipe, temps_effectif)
+            except:
+                print(f"Doigt {equipe} n'est pas dans le equipe.csv")
             real_equipe.add_epreuves(self.nom, temps_effectif)
         
         for type_equipe in self.classement.keys():

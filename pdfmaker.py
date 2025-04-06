@@ -8,21 +8,21 @@ from Scripts import utils as u
 import sys
 from reportlab.platypus import Image
 
-def create_pdf(mixite="H", ent=0, journee="Weekend"):
+def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     # Create the PDF document
-    filename = f'classement_{mixite}_{"Evasion" if ent==1 else "Challenge"}_{journee}.pdf'
+    filename = f'./Resultats finaux/PDF/{journee}/{mixite}/{"Evasion" if ent==1 else "Challenge"}/classement_{mixite}_{"Evasion" if ent==1 else "Challenge"}_{journee}.pdf'
     doc = SimpleDocTemplate(filename, pagesize=letter)
 
     # store if teams are on saturday, sunday or both
     teams = {}
-    with open('./Essec_J1/race_results.csv', 'r') as file:
+    with open('./Essec_J1/race_results.csv', 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file, delimiter='@')
         next(csv_reader)  # Skip header row
         for row in csv_reader:
             data = row[0].split(";")
             teams[data[3]] = [data[3], 'J1']
     
-    with open('./Essec_J2/race_results.csv', 'r') as file:
+    with open('./Essec_J2/race_results.csv', 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file, delimiter='@')
         next(csv_reader)  # Skip header row
         for row in csv_reader:
@@ -38,10 +38,10 @@ def create_pdf(mixite="H", ent=0, journee="Weekend"):
     teams['Pitchou'][1] = 'Weekend'
     teams['Eli & Elvire'][1] = 'Weekend'
     teams['Les Deux Meuh Raids'][1] = 'Weekend'
-    teams['Les MarLÃ©aventuriÃ¨res'][1] = 'Weekend'
+    teams['Les MarLéaventurières'][1] = 'Weekend'
     teams['Les Troufions'][1] = 'Weekend'
     teams["les Am... d'Orion"][1] = 'Weekend'
-    teams["R'Ã©di"][1] = 'Weekend'
+    teams["R'édi"][1] = 'Weekend'
     teams['Citron - Sucre'][1] = 'Weekend'
     teams['Sucre - Citron'][1] = 'Weekend'
     teams['La villa'][1] = 'Weekend'
@@ -72,14 +72,14 @@ def create_pdf(mixite="H", ent=0, journee="Weekend"):
     
     # Read data from CSV file
     results_path = './Essec_J1/race_results.csv' if journee == "J1" else './Essec_J2/race_results.csv' if journee == "J2" else './Essec_J1/race_results.csv'
-    with open(results_path, 'r') as file:
+    with open(results_path, 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file)
         next(csv_reader)  # Skip header row
         for row in csv_reader:
             row = row[0].split(";")
-            print(f"Categorie : {journee}")
-            if row[1] == mixite and int(row[2]) == ent and teams[row[3]][1] == journee:
-                data.append([0, row[3], u.heure_from_sec(int(row[4]))])
+            if teams[row[3]][1] == journee:
+                if (row[1] == mixite and int(row[2]) == ent) or mixite == "scratch":
+                    data.append([0, row[3], u.heure_from_sec(int(row[4]))])
         # Sort data based on the time (last column)
         data[1:] = sorted(data[1:], key=lambda x: x[2])
         # Update rankings
