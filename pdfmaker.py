@@ -1,6 +1,6 @@
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
+from reportlab.platypus import PageTemplate, SimpleDocTemplate, BaseDocTemplate, Table, TableStyle, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
 import csv
 from Scripts import utils as u
@@ -8,10 +8,24 @@ from Scripts import utils as u
 import sys
 from reportlab.platypus import Image
 
+def add_page_number(canvas, doc):
+    """
+    Ajoute un numéro de page en bas de chaque page.
+    """
+    footer_text = "RAID ESSEC EY 2025 - Classement réalisé par Raid CENTRALESUPELEC"
+    canvas.setFont("Helvetica", 8)
+    canvas.setFillColor(colors.darkgray)
+    canvas.drawString(30, 15, footer_text)  # Position (x=30, y=15) en bas à gauche
+    page_num = canvas.getPageNumber()
+    canvas.drawString(500, 15, f"Page {page_num}")  # Position (x=500, y=15) en bas à droite
+
 def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     # Create the PDF document
     filename = f'./Resultats finaux/PDF/{journee}/{mixite}/{"Evasion" if ent==1 else "Challenge"}/classement_{mixite}_{"Evasion" if ent==1 else "Challenge"}_{journee}.pdf'
     doc = SimpleDocTemplate(filename, pagesize=letter)
+
+    # doc.addPageTemplates([PageTemplate(onPage=add_page_number)])
+
 
     # store if teams are on saturday, sunday or both
     teams = {}
@@ -52,18 +66,33 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     # Create a list to store the elements
     elements = []
 
-    # Add logo
-    logo = Image('./images/Logo noir HD.png', width=100, height=100)
-    logo.hAlign = 'LEFT'
-    elements.append(logo)
+    styles = getSampleStyleSheet()
+
+    # Add logos
+    logo1 = Image('./images/Logo noir HD.png', width=100, height=100)
+    logo1.hAlign = 'LEFT'
+    logo2 = Image('./images/Logo EY.png', width=100, height=100)
+    logo2.hAlign = 'RIGHT'
+    
+    # Create a table to hold the logos side by side
+    logo_table = Table([[logo1, logo2]], colWidths=['50%', '50%'])
+    logo_table.setStyle(TableStyle([('ALIGN', (0, 0), (0, 0), 'LEFT'),
+                                  ('ALIGN', (1, 0), (1, 0), 'RIGHT'),
+                                  ('VALIGN', (0, 0), (-1, -1), 'MIDDLE')]))
+    elements.append(logo_table)
+
+    elements.append(Paragraph("<br/><br/>", styles['Normal']))
     
     # Add title
-    styles = getSampleStyleSheet()
-    title = Paragraph("Classement Samedi Raid ESSEC", styles['Title'])
+    title = Paragraph("Classement Raid ESSEC EY 2025", styles['Title'])
     elements.append(title)
     mixite_text = "Hommes" if mixite == "H" else "Femmes" if mixite == "F" else "Mixte"
     cate_text = "Evasion" if ent == 1 else "Challenge"
-    subtitle = Paragraph(f"Course {mixite_text} - {cate_text} - {journee}", styles['Heading2'])
+    journee_text = "Samedi" if journee == "J1" else "Dimanche" if journee == "J2" else "Weekend"
+    if mixite == "scratch":
+        subtitle = Paragraph(f"Classement scratch - {journee_text}", styles['Heading2'])
+    else:
+        subtitle = Paragraph(f"Course {mixite_text} - {cate_text} - {journee_text}", styles['Heading2'])
     subtitle.style.alignment = 1  # 1 is for center alignment
     elements.append(subtitle)
     
@@ -71,7 +100,7 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     data = [['Classement', 'Equipe', 'Temps']]
     
     # Read data from CSV file
-    results_path = './Essec_J1/race_results.csv' if journee == "J1" else './Essec_J2/race_results.csv' if journee == "J2" else './Essec_J1/race_results.csv'
+    results_path = './Essec_J1/race_results.csv' if journee == "J1" else './Essec_J2/race_results.csv' if journee == "J2" else './fusion_results.csv'
     with open(results_path, 'r', encoding='utf-8') as file:
         csv_reader = csv.reader(file)
         next(csv_reader)  # Skip header row
@@ -84,7 +113,7 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
         data[1:] = sorted(data[1:], key=lambda x: x[2])
         # Update rankings
         for i in range(1, len(data)):
-            data[i][0] = i
+            data[i][0] = "#" + str(i)  # Add ranking number
     
     # Create the table
     table = Table(data)
@@ -101,7 +130,7 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     elements.append(table)
     
     # Build the PDF
-    doc.build(elements)
+    doc.build(elements, onFirstPage=add_page_number, onLaterPages=add_page_number)
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:
