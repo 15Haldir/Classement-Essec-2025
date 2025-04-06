@@ -126,4 +126,6 @@ def L_badgeuse_valide(res_equipe, equipe, epreuve):
         return res_equipe_clear
     except:
         raise ValueError(f"Erreur dans l'épreuve {epreuve} pour l'équipe {equipe.numero} : {res_equipe}")
+    
+print(heure_from_sec(14109))
 
