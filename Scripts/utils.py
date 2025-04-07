@@ -121,7 +121,7 @@ def L_badgeuse_valide(res_equipe, equipe, epreuve):
         (badgeuse_suivante, temps_suivant) = res_equipe[i+1]
         if badgeuse.fonction != "gel":
             res_equipe_clear.append((badgeuse,temps))
-        else : 
+        else: 
             if badgeuse_suivante.fonction == "degel":
                 res_equipe_clear.append((badgeuse,temps))
         i+=1

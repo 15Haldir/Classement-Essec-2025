@@ -127,8 +127,6 @@ class EpreuveObli(Epreuve):
             while compteur < len(self.res_obli[equipe])-1:
                 if self.res_obli[equipe][compteur][0].fonction == "depart":
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1] - self.res_obli[equipe][compteur][0].gain_temps
-                elif self.res_obli[equipe][compteur][0].fonction == "degel":
-                    temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1] - self.res_obli[equipe][compteur][0].gain_temps
                 elif self.res_obli[equipe][compteur][0].fonction == "gel":
                     temps_effectif -= self.res_obli[equipe][compteur][0].gain_temps
                 elif self.res_obli[equipe][compteur][0].fonction == "gel_1_point":
