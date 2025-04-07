@@ -176,7 +176,11 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
         if journee == "Weekend":
             team_table.setStyle(TableStyle([
                 ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
                 ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (-1, 0), 14),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
                 ('FONTNAME', (0, 1), (-1, 1), 'Helvetica-Bold'),  # 2nd place in bold
                 ('FONTNAME', (0, 8), (-1, 8), 'Helvetica-Bold'),  # 9th place in bold
                 ('GRID', (0, 0), (-1, -1), 1, colors.black)
@@ -184,7 +188,11 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
         else:
             team_table.setStyle(TableStyle([
                 ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
                 ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (-1, 0), 14),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
                 ('GRID', (0, 0), (-1, -1), 1, colors.black)
             ]))
         team_elements.append(team_table)
