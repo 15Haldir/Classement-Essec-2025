@@ -78,9 +78,10 @@ def return_fusion_result(path1, path2):
     team = {}
     J1_results = {}
     J2_results = {}
+    header = []
     with open(path1 + "race_results.csv", mode="r", newline="") as file1:
         reader1 = csv.reader(file1, delimiter=";")
-        header1 = next(reader1)
+        header = [elem.replace("Temps total", "Temps J1") for elem in next(reader1)]
         for row in reader1:
             J1_results[row[0]] = row[4:]
             team = row[:5] + [False]
@@ -89,7 +90,7 @@ def return_fusion_result(path1, path2):
     
     with open(path2 + "race_results.csv", mode="r", newline="") as file2:
         reader2 = csv.reader(file2, delimiter=";")
-        header2 = next(reader2)
+        header += [elem.replace("Temps total", "Temps J2") for elem in next(reader2)[4:]]
         for row in reader2:
             J2_results[row[0]] = row[4:]
             team = row[:5] + [False]
@@ -102,7 +103,8 @@ def return_fusion_result(path1, path2):
     
     with open("fusion_results.csv", mode="w", newline="") as file:
         writer = csv.writer(file, delimiter=";")
-        writer.writerow(["Team"] + ["Mixite"] + ["Ent"] + ["Nom"] + ["Temps total Weekend"] + ["Temps J1"] + ["Obli 1"] + ["Obli 2"] + ["Obli 2"]+ ["Temps J2"])
+        header.insert(4, "Temps total")
+        writer.writerow(header)
         for team in result.keys():
             if result[team][-1]:
                 writer.writerow([team] + result[team][:-1] + J1_results[team] + J2_results[team])

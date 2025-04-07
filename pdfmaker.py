@@ -173,11 +173,20 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
         
         team_table = Table(team_data)
         team_table = Table(team_data, colWidths=['40%', '40%'])  # Set column widths to 50% each
-        team_table.setStyle(TableStyle([
-            ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-            ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black)
-        ]))
+        if journee == "Weekend":
+            team_table.setStyle(TableStyle([
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('FONTNAME', (0, 1), (-1, 1), 'Helvetica-Bold'),  # 2nd place in bold
+                ('FONTNAME', (0, 8), (-1, 8), 'Helvetica-Bold'),  # 9th place in bold
+                ('GRID', (0, 0), (-1, -1), 1, colors.black)
+            ]))
+        else:
+            team_table.setStyle(TableStyle([
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black)
+            ]))
         team_elements.append(team_table)
         
         team_doc.build(team_elements, onFirstPage=add_page_number, onLaterPages=add_page_number)
