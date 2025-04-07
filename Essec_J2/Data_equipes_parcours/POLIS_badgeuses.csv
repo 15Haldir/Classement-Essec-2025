@@ -9,8 +9,8 @@ epreuve;signaleur;numero;fonction;temps bonus;obligatoire;repetable;heure mass s
 2.VTT + BO(bonus compris) + VTT;R35;5;fin;0;;1;
 3.CO (bonus compris);R35bis;5;depart;-3600;;2;
 3.CO (bonus compris);CP2;24;fin;0;;1;
-4.CO +  VTT + 1km Trail;CP2bis;24;depart;0;;2;
-4.CO +  VTT + 1km Trail;R49;6;fin;0;;1;
+4.VTT + 1km Trail;CP2bis;24;depart;0;;2;
+4.VTT + 1km Trail;R49;6;fin;0;;1;
 5.Trail;R49bis;6;depart;-3600;;2;
 5.Trail;A54;11;gel;0;;1;
 5.Trail;A54bis;11;degel;0;;2;
