@@ -84,7 +84,7 @@ for epreuve in res.keys():
             epreuve_a_classer = e.Epreuve_co(peloton, epreuve, res_co)
             epreuve_a_classer.make_classement()
             res_final[epreuve] = epreuve_a_classer.classement
-    
+
 
 
     print("\n")

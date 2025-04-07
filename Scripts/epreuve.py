@@ -125,7 +125,7 @@ class EpreuveObli(Epreuve):
             real_equipe = peloton.find_equipe_doigts(equipe)
             self.res_obli[equipe] = u.L_badgeuse_valide(self.res_obli[equipe], real_equipe, self.nom)
             while compteur < len(self.res_obli[equipe])-1:
-                if self.res_obli[equipe][compteur][0].fonction == "depart":
+                if self.res_obli[equipe][compteur][0].fonction in ["depart", "degel"]:
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1] - self.res_obli[equipe][compteur][0].gain_temps
                 elif self.res_obli[equipe][compteur][0].fonction == "gel":
                     temps_effectif -= self.res_obli[equipe][compteur][0].gain_temps
@@ -133,8 +133,7 @@ class EpreuveObli(Epreuve):
                     temps_effectif += self.res_obli[equipe][compteur+1][1] - self.res_obli[equipe][compteur][1]-self.res_obli[equipe][compteur][0].gain_temps
                 elif self.res_obli[equipe][compteur][0].fonction == "fin":
                     temps_effectif -= self.res_obli[equipe][compteur][0].gain_temps
-                    if self.res_obli[equipe][compteur][0].numero == 10:
-                        a=1/0
+
                 
                 if self.res_obli[equipe][compteur][0].numero == 34:
                     real_equipe.a_vu_bo = True
@@ -144,11 +143,11 @@ class EpreuveObli(Epreuve):
 
 
                 
-            # if real_equipe.numero == 139 and self.nom == "Obli 3":
+            # if real_equipe.numero == 139 and self.nom == "6.Trail2":
             #     print(real_equipe.nom)
             #     print(equipe)
-            #     print([(self.res_obli[1915558][i][0].fonction, self.res_obli[1915558][i][1])for i in range(len(self.res_obli[1915558]))])
-            #     print([(self.res_obli[1915569][i][0].fonction, self.res_obli[1915569][i][1]) for i in range(len(self.res_obli[1915569]))])
+            #     print([(self.res_obli[1915558][i][0].numero, self.res_obli[1915558][i][1])for i in range(len(self.res_obli[1915558]))])
+            #     print([(self.res_obli[1915569][i][0].numero, self.res_obli[1915569][i][1]) for i in range(len(self.res_obli[1915569]))])
             #     print([(self.res_obli[1000947][i][0].fonction, self.res_obli[1000947][i][1]) for i in range(len(self.res_obli[1000947]))])
             #     a=1/0
 

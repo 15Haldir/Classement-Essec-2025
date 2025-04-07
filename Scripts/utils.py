@@ -113,8 +113,8 @@ def return_fusion_result(path1, path2):
 
 def L_badgeuse_valide(res_equipe, equipe, epreuve): 
 
-    if res_equipe == None:
-        return None
+    if res_equipe == None or len(res_equipe) <= 1:
+        return []
 
     res_equipe_clear = []
     i = 0
