@@ -60,7 +60,6 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
     teams['Sucre - Citron'][1] = 'Weekend'
     teams['La villa'][1] = 'Weekend'
     teams['DSA'][1] = 'Weekend'
-    teams['EY1'][1] = 'Weekend'
     
 
     # Create a list to store the elements
