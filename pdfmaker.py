@@ -145,21 +145,35 @@ def create_pdf(mixite="scratch", ent=0, journee="Weekend"):
         team_filename = f'./Resultats finaux/PDF/teams/equipe_{team[0]}.pdf'
         team_doc = SimpleDocTemplate(team_filename, pagesize=letter)
         team_elements = []
+
+        # Add logos
+        logo1 = Image('./images/Logo noir HD.png', width=100, height=100)
+        logo1.hAlign = 'LEFT'
+        logo2 = Image('./images/Logo EY.png', width=100, height=100)
+        logo2.hAlign = 'RIGHT'
+        
+        # Create a table to hold the logos side by side
+        logo_table = Table([[logo1, logo2]], colWidths=['50%', '50%'])
+        logo_table.setStyle(TableStyle([('ALIGN', (0, 0), (0, 0), 'LEFT'),
+                                    ('ALIGN', (1, 0), (1, 0), 'RIGHT'),
+                                    ('VALIGN', (0, 0), (-1, -1), 'MIDDLE')]))
+        team_elements.append(logo_table)
+
+        team_elements.append(Paragraph("<br/><br/>", styles['Normal']))
         
         # Add title
-        team_title = Paragraph(f"Équipe {team[0]}", styles['Title'])
+        team_title = Paragraph(f"Équipe n°{team[0]}", styles['Title'])
         team_elements.append(team_title)
         
-        team_name = Paragraph(f"Nom: {team[1]}", styles['Heading2'])
+        team_name = Paragraph(f"Nom de l'équipe: {team[1]}", styles['Heading2'])
         team_elements.append(team_name)
         
         # Add team data in table format
-        team_data = [[header_teams[i], teams_full_results[team[1]][i]] for i in range(len(header_teams))]
+        team_data = [[header_teams[i], u.heure_from_sec(teams_full_results[team[1]][i])] for i in range(4, len(header_teams))]
         
         team_table = Table(team_data)
+        team_table = Table(team_data, colWidths=['40%', '40%'])  # Set column widths to 50% each
         team_table.setStyle(TableStyle([
-            ('BACKGROUND', (0, 0), (-1, 0), colors.darkblue),
-            ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
             ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
             ('GRID', (0, 0), (-1, -1), 1, colors.black)

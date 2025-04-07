@@ -1,21 +1,21 @@
 epreuve;signaleur;numero;fonction;temps bonus;obligatoire;repetable;heure mass start
-Obli 1;S0;0;depart;0;;1;09:33
-Obli 1;R15;1;fin;0;;1;
-Obli 2;R15bis;1;depart;0;;2;
-Obli 2;A23;2;gel;0;;1;
-Obli 2;A23bis;2;degel;0;;2;
-Obli 2;B27;3;gel_1_point;2700;;1;
-Obli 2;A30;4;gel_1_point;30;;1;
-Obli 2;R35;5;fin;0;;1;
-Obli CO;R35bis;5;depart;-3600;;2;
-Obli CO;CP2;24;fin;0;;1;
-Obli 3;CP2bis;24;depart;0;;2;
-Obli 3;R49;6;fin;0;;1;
-Obli 4;R49bis;6;depart;-3600;;2;
-Obli 4;A54;11;gel;0;;1;
-Obli 4;A54bis;11;degel;0;;2;
-Obli 4;A59bis;7;gel;0;;1;
-Obli 4;A60;8;degel;0;;1;
-Obli 4;A62;9;gel;0;;1;
-Obli 4;A62bis;9;degel;0;;2;
-Obli 4;CNOUS;10;fin;0;;1;
+1.Run & Bike;S0;0;depart;0;;1;09:33
+1.Run & Bike;R15;1;fin;0;;1;
+2.VTT + BO(bonus compris) + VTT;R15bis;1;depart;0;;2;
+2.VTT + BO(bonus compris) + VTT;A23;2;gel;0;;1;
+2.VTT + BO(bonus compris) + VTT;A23bis;2;degel;0;;2;
+2.VTT + BO(bonus compris) + VTT;B27;3;gel_1_point;2700;;1;
+2.VTT + BO(bonus compris) + VTT;A30;4;gel_1_point;30;;1;
+2.VTT + BO(bonus compris) + VTT;R35;5;fin;0;;1;
+3.CO (bonus compris);R35bis;5;depart;-3600;;2;
+3.CO (bonus compris);CP2;24;fin;0;;1;
+4.CO +  VTT + 1km Trail;CP2bis;24;depart;0;;2;
+4.CO +  VTT + 1km Trail;R49;6;fin;0;;1;
+5.Trail;R49bis;6;depart;-3600;;2;
+5.Trail;A54;11;gel;0;;1;
+5.Trail;A54bis;11;degel;0;;2;
+5.Trail;A59bis;7;gel;0;;1;
+5.Trail;A60;8;degel;0;;1;
+5.Trail;A62;9;gel;0;;1;
+5.Trail;A62bis;9;degel;0;;2;
+5.Trail;CNOUS;10;fin;0;;1;
